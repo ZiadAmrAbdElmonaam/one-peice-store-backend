@@ -22,6 +22,7 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "devise"
 gem "devise-jwt"
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'rack-cors'
 
 
 # Reduces boot times through caching; required in config/boot.rb

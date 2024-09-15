@@ -3,14 +3,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
+    resource.role = params[:user][:role] if params[:user][:role].present? && current_user&.admin?
 
     if resource.save
       render json: { message: "You have signed up successfully" }, status: :ok
     else
-      render json: {
-        errors: resource.errors.full_messages
-      }, status: :unprocessable_entity
+      render json: { errors: resource.errors.full_messages }, status: :unprocessable_entity
     end
+
   end
 
   private
